@@ -1,5 +1,5 @@
 .idea
-www/*
+# www/*
 !www/.gitkeep
 conf/nginx/sites-enabled/*
 !conf/nginx/sites-enabled/example.com.conf
