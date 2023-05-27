@@ -12,10 +12,8 @@ class CoinRateService
 
     public function __construct()
     {
-
         $this->apiKey = Config::get('services.cmp.token');
         $this->apiUri = 'https://pro-api.coinmarketcap.com/v1/';
-    
     }
 
     public function getRate()
@@ -32,8 +30,5 @@ class CoinRateService
         $rate = $data['data']['BTC']['quote']['UAH']['price'] ?? null;
 
         return $rate;
-        // }
-
-        // return null;
     }
 }
