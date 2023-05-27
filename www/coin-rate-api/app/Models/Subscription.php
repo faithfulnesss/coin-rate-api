@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Collection;
 use Illuminate\Notifications\Notifiable;
 
@@ -27,7 +27,7 @@ class Subscription extends Model
 
     public static function getAllSubscriptions(): Collection
     {
-        $contents = File::get(storage_path('app/subscriptions.json'));
+        $contents = Storage::get('app/subscriptions.json');
         $subscriptions = collect(json_decode($contents, true));
 
         // Convert each array item to a Subscription object
@@ -63,7 +63,7 @@ class Subscription extends Model
     
         $subscriptions->push($this);
     
-        File::put(storage_path('app/subscriptions.json'), $subscriptions->toJson());
+        Storage::put('app/subscriptions.json', $subscriptions->toJson());
     
         return true;
     }    
