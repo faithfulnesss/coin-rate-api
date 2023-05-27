@@ -25,10 +25,10 @@ class Subscription extends Model
         return $this->email;
     }
 
-    public static function getAllSubscriptions(): Collection
+    public static function loadSubscriptions(): Collection
     {
         $contents = Storage::get('subscriptions.json');
-        $subscriptions = collect(json_decode($contents, true));
+        $subscriptions = collect(@json_decode($contents, true) ?? []);
 
         // Convert each array item to a Subscription object
         $subscriptions = $subscriptions->map(function ($item) {
@@ -38,18 +38,18 @@ class Subscription extends Model
         return $subscriptions;
     }
 
-    public function save(array $options = [])
+    public static function saveSubscriptions(Collection $subscriptions): bool
     {
-        $subscriptions = self::getAllSubscriptions();
+        // $subscriptions = self::getAllSubscriptions();
         
-        if ($subscriptions->firstWhere('email', $this->email)){
-            return false;
-        }  
+        // if ($subscriptions->firstWhere('email', $this->email)){
+        //     return false;
+        // }  
     
-        $subscriptions->push($this);
+        // $subscriptions->push($this);
     
-        Storage::put('subscriptions.json', $subscriptions->toJson());
+        return Storage::put('subscriptions.json', $subscriptions->toJson());
     
-        return true;
+        // return true;
     }    
 }
