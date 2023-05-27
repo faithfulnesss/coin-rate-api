@@ -35,26 +35,30 @@ class SubscriptionController extends Controller
             return response()->json(['msg' => 'Failed email validation',], Response::HTTP_CONFLICT);
         }
 
+        $subscriptions = Subscription::loadSubscriptions();
+
         $email = $request->input('email');
+
+        if ($subscriptions->firstWhere('email', $email)){
+            return response()->json(['msg' => 'Email is already present',], Response::HTTP_CONFLICT);
+        }  
 
         $subscription = new Subscription(['email' => $email, 'subscription_date' => date("Y-m-d")]);
 
-        $subscription_created = $subscription->save();
+        $subscriptions = $subscriptions->push($subscription);
 
-        if(!$subscription_created){
-            return response()->json(['msg' => 'Email is already present',], Response::HTTP_CONFLICT);
-        }
-        
+        Subscription::saveSubscriptions($subscriptions);
+
         return response()->json(['msg' => 'Email successfully created'], Response::HTTP_CREATED);
     }
 
     public function sendEmails() {
         $rate = $this->coinRateService->getRate();
 
-        $subscriptions = Subscription::getAllSubscriptions();
+        $subscriptions = Subscription::loadSubscriptions();
         
         Notification::send($subscriptions, new CoinRateNotification($rate));
 
-        return response()->json(['msg' => 'Emails successfully have been sent', Response::HTTP_OK]);
+        return response()->json(['msg' => 'Emails have been successfully sent'], Response::HTTP_OK);
     }
 }
