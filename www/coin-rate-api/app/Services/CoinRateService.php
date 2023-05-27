@@ -32,8 +32,5 @@ class CoinRateService
         $rate = $data['data']['BTC']['quote']['UAH']['price'] ?? null;
 
         return $rate;
-        // }
-
-        // return null;
     }
 }
