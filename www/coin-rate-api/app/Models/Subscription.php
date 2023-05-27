@@ -28,7 +28,7 @@ class Subscription extends Model
     public static function getAllSubscriptions(): Collection
     {
         $contents = Storage::get('app/subscriptions.json');
-        $subscriptions = collect(json_decode($contents, true));
+        $subscriptions = collect(@json_decode($contents, true) ?? []);
 
         // Convert each array item to a Subscription object
         $subscriptions = $subscriptions->map(function ($item) {
@@ -37,14 +37,6 @@ class Subscription extends Model
 
         return $subscriptions;
     }
-
-    // public static function getAllSubscriptions(): Collection
-    // {
-    //     $contents = File::get(storage_path('app/subscriptions.json'));
-    //     $subscriptions = collect(json_decode($contents, true));
-        
-    //     return $subscriptions ?: collect();
-    // }
 
     public static function create(array $attributes = []): bool
     {
