@@ -20,14 +20,12 @@ class CoinRateController extends Controller
         $this->coinRateService = $coinRateService;
     }
     
-    public function getRate(Request $request)
+    public function getRate()
     {
         $rate = $this->coinRateService->getRate();
         
         if(empty($rate)) {
-            
-            return response()->json(['msg' => 'Failed to fetch the BTC-UAH rate.','error' => true], Response::HTTP_BAD_REQUEST);            
-    
+            return response()->json(['msg' => 'Failed to fetch the BTC-UAH rate.'], Response::HTTP_BAD_REQUEST);            
         }
 
         return $rate;
