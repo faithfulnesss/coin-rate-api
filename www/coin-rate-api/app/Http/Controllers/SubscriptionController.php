@@ -34,6 +34,7 @@ class SubscriptionController extends Controller
         }
         
         return response()->json(['msg' => $subscription], Response::HTTP_CREATED);
+
     }
 
     public function sendEmails(CoinRateService $coinRateService) {
