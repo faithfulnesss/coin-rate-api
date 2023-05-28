@@ -7,7 +7,7 @@ This project implements an API service that allows users to:
 1. Clone the repository:
 `git clone https://github.com/faithfulnesss/coin-rate-api.git`
 2. Change into the project directory:
-`cd bitcoin-exchange-rate-service`
+`cd coin-rate-api`
 3. Install the project dependencies using Composer:
 `composer install`
 # Requirements
