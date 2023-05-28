@@ -1,5 +1,5 @@
 # Bitcoin Rate Service
-This project implements an API service that allows users to:
+This project is implemented using Laravel and project implements an API service that allows users to:
 - Get the current exchange rate of Bitcoin (BTC) in Ukrainian Hryvnia (UAH).
 - Subscribe an email address to receive information about changes in the exchange rate.
 - Send an emails to all subscribed users with the latest exchange rate.
