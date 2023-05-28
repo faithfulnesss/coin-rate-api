@@ -21,7 +21,7 @@ It is recommended to use Docker by running `docker-compose up`. However, if you 
 ```docker exec -it <container_name> bash```.  
 Replace `<container_name>` with the name of your Docker container.
 2. Create the `subscriptions.json` file:  
-```touch /var/www/coin-rate-api/storage/subscriptions.json```
+```touch /var/www/coin-rate-api/storage/app/subscriptions.json```
 3. Set permissions for storage directory:  
 ```chown -R www-data:www-data /var/www/coin-rate-api/storage```  
 ```chmod -R 775 /var/www/coin-rate-api/storage```
