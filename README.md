@@ -41,12 +41,12 @@ Before running the service, you need to configure the API key for CoinMarketCap 
 To start the service, run the following command:  
 `docker compose up -d`
 # Endpoints
-- GET /api/rate
+- `GET /api/rate`
   Retrieves the current exchange rate of Bitcoin (BTC) in Ukrainian Hryvnia (UAH).
-- POST /api/subscribe
+- `POST /api/subscribe`
   Subscribes an email address to receive information about changes in the exchange rate.  
   `Request Body: { "email" : "example@example.com" }`
-- POST /api/send-emails
+- `POST /api/send-emails`
   Sends email notifications to all subscribed users with the latest exchange rate.
 # Testing
 The project was tested using the Mailtrap fake SMTP server. Mailtrap allows you to test email functionality in a safe environment without sending actual emails to real recipients.
