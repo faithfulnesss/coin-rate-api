@@ -13,7 +13,7 @@ This project implements an API service that allows users to:
 # Requirements
 To run the service, you will need:
 - PHP (8.1 or higher)
-- Composer (Dependency Manager for PHP)
+- Composer
 - Docker (optional)
 
 It is recommended to use Docker by running `docker-compose up`. However, if you decide to use Docker, you should perform the following steps after installation:
