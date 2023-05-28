@@ -39,15 +39,13 @@ class SubscriptionController extends Controller
 
         $email = $request->input('email');
 
-        if ($subscriptions->firstWhere('email', $email)){
+        if ($subscriptions->contains('email', $email)){
             return response()->json(['msg' => 'Email is already present',], Response::HTTP_CONFLICT);
         }  
 
         $subscription = new Subscription(['email' => $email, 'subscription_date' => date("Y-m-d")]);
 
-        $subscriptions = $subscriptions->push($subscription);
-
-        Subscription::saveSubscriptions($subscriptions);
+        Subscription::saveSubscriptions($subscriptions->push($subscription));
 
         return response()->json(['msg' => 'Email successfully created'], Response::HTTP_CREATED);
     }
