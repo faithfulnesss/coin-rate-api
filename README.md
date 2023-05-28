@@ -45,7 +45,6 @@ To start the service, run the following command:
   Retrieves the current exchange rate of Bitcoin (BTC) in Ukrainian Hryvnia (UAH).
 - POST /api/subscribe
   Subscribes an email address to receive information about changes in the exchange rate.
-  Request Body:  
-  `{ "email" : "example@example.com" }`
+  `Request Body: { "email" : "example@example.com" }`
 - POST /api/send-emails
   Sends email notifications to all subscribed users with the latest exchange rate.
