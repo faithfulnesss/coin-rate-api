@@ -48,5 +48,5 @@ To start the service, run the following command:
   `Request Body: { "email" : "example@example.com" }`
 - `POST /api/sendEmails`
   Sends email notifications to all subscribed users with the latest exchange rate.
-# Testing
+# Mailing
 The project was tested using the Mailtrap fake SMTP server. Mailtrap allows you to test email functionality in a safe environment without sending actual emails to real recipients.
